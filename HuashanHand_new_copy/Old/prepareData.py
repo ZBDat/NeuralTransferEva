@@ -17,12 +17,12 @@ from sklearn.model_selection import StratifiedKFold
 
 EVA_names = config['EVA_names']
 PIDwidth = config['PIDwidth']
-# ROINum = config['ROINum']
+ROINum = config['ROINum']
 
 currentFold = config['currentFold']
 totalFold = config['totalFold'] 
 
-#%%
+
 def get_PID_from_mat_file(input_file):
     
     root, _ = os.path.splitext(input_file)
@@ -197,9 +197,9 @@ def main(inputfolder, outputfolder, config):
     if not os.path.exists(outputfolder):
         os.mkdir(outputfolder)
     inputList = glob.glob(inputfolder+'/ROISignals_sub*.mat')
-    ExcelInput = os.path.join(inputfolder,'Patient_Information_2019_09_29.xlsx')
+    ExcelInput = os.path.join(inputfolder, 'Patient_Information_2019_09_29.xlsx')
     SignalDict, outputShape = readMatToNpy_v1(inputList, ExcelInput, outputfolder, ifSave=False)
-    inputPath = os.path.join(inputfolder,'Patient_Information_2019_09_29.xlsx')
+    inputPath = os.path.join(inputfolder, 'Patient_Information_2019_09_29.xlsx')
     labelDict, aux_info_dict = readExcelToNpy_v1(inputPath, outputfolder, FMS_UE_threshold=15, ifSave=True)
     
     # prepare trainging data and label
