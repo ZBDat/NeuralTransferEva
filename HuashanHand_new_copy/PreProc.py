@@ -1,7 +1,3 @@
-"""
-To build the data for training from the mat files, and split.
-"""
-
 import os
 import glob
 import csv
@@ -44,6 +40,14 @@ def pid_from_excel(item):
 
 
 def read_mat(input_list, excel_input, output_path, save=False):
+    """
+    Transform mat files to numpy files
+    :param input_list:
+    :param excel_input:
+    :param output_path:
+    :param save:
+    :return:
+    """
     GTdf = pd.read_excel(excel_input)
     PID_list = GTdf['PID'].to_list()
     modified_PID_List = [pid_from_excel(item) for item in PID_list]
